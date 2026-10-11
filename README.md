@@ -82,11 +82,12 @@ claude plugin install capscan@capscan
 
 For other agents, or to pin the skill in one repository, copy `plugin/skills/capscan/` into the directory the agent reads skills from, such as `.claude/skills/`, `.github/skills/`, or `.agents/skills/`.
 
-Then, from a clone of the repository to review, ask for a review:
+Then, from a clone of the repository to review, ask for a review.
+Plugin skills are namespaced by plugin, so the installed plugin's command is `/capscan:capscan`, and a copied skill's command is `/capscan`:
 
 ```console
-claude "/capscan review the open Dependabot pull requests"
-claude "/capscan sweep"
+claude "/capscan:capscan review the open Dependabot pull requests"
+claude "/capscan:capscan sweep"
 claude "what would moving to Go 1.25 give the inventory service?"
 ```
 
