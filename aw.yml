@@ -1,0 +1,15 @@
+name: capscan
+description: Reviews Dependabot pull requests, and the repository weekly, for capabilities that dependency upgrades unlock, such as a built-in that can replace a third-party package.
+license: MIT
+includes:
+  - workflows/capscan.md
+  - workflows/capscan-sweep.md
+# The workflows read the rules and run the scripts from .github/aw/capscan/.
+# The skill uses the same files from skills/capscan/, so there is one copy of each.
+resources:
+  - source: skills/capscan/RULES.md
+    destination: .github/aw/capscan/RULES.md
+  - source: skills/capscan/scripts/gather-facts.sh
+    destination: .github/aw/capscan/gather-facts.sh
+  - source: skills/capscan/scripts/verify-report.sh
+    destination: .github/aw/capscan/verify-report.sh

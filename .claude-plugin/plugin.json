@@ -1,0 +1,9 @@
+{
+  "name": "capscan",
+  "description": "Review dependency updates for capabilities a repository could adopt, out of band from CI.",
+  "version": "1.0.0",
+  "author": { "name": "Steve Henderson" },
+  "homepage": "https://stevehenderson.github.io/Dependencies-Shipped-Features/",
+  "repository": "https://github.com/stevehenderson/capscan",
+  "license": "MIT"
+}

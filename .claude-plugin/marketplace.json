@@ -1,0 +1,14 @@
+{
+  "name": "capscan",
+  "description": "capscan, a capability review for dependency updates.",
+  "owner": {
+    "name": "Steve Henderson"
+  },
+  "plugins": [
+    {
+      "name": "capscan",
+      "source": "./",
+      "description": "Review dependency updates for capabilities a repository could adopt, out of band from CI."
+    }
+  ]
+}
