@@ -20,6 +20,7 @@ Dependabot and the security tooling own vulnerability review; capscan runs along
 ## Ground every finding in this repository
 - Each finding must point to at least one file and line in this repository where the capability applies.
   Write locations as `path:line` in backticks, with the path relative to the repository root.
+  Cite only files in the repository. Refer to gathered facts, such as `capscan-input/govulncheck.txt`, by file name without a line number.
 - Drop any finding that has no location in this repository.
 - Check for opt-in gates: language version directives (the `go` line in go.mod, `engines` in package.json,
   `.nvmrc`, `requires-python` in pyproject.toml), container base image tags, feature flags, GODEBUG settings,

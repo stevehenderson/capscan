@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Verifies a capscan report before anyone sees it:
-# every cited `path:line` must exist in the checkout, and every link must use an allowed host.
+# every cited `path:line` must exist in a file the repository tracks, and every link must use an allowed host.
 # Usage: verify-report.sh <report> <allowed-host>...
 set -euo pipefail
 
@@ -8,11 +8,24 @@ report=$1
 shift
 [ -s "$report" ] || exit 0
 
+# A citation must point at a file in the repository. Generated files, such as the facts in
+# capscan-input/, exist where the agent runs but not where a reader looks, so they do not count.
+tracked() {
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    git ls-files --error-unmatch -- "$1" >/dev/null 2>&1
+  else
+    [ -f "$1" ]
+  fi
+}
+
 status=0
 # Citations are `path:line` or `path:start-end`; a range is checked against its last line.
 while IFS=: read -r path lines; do
   last=${lines#*-}
-  if [ ! -f "$path" ] || [ "$(awk 'END { print NR }' "$path")" -lt "$last" ]; then
+  if ! tracked "$path"; then
+    echo "::error::report cites $path:$lines, which is not a file in this repository"
+    status=1
+  elif [ "$(awk 'END { print NR }' "$path")" -lt "$last" ]; then
     echo "::error::report cites $path:$lines, which does not exist"
     status=1
   fi

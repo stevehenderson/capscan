@@ -33,7 +33,7 @@ capscan runs two ways from the same rules and scripts:
 2. From the repository to review, install the package:
 
    ```console
-   gh aw add stevehenderson/capscan@v1.0.0
+   gh aw add stevehenderson/capscan@v1.0.1
    ```
 
    This writes the two workflows and their compiled lock files to `.github/workflows/`, and the rules and scripts to `.github/aw/capscan/`.
