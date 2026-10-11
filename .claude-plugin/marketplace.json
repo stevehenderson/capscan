@@ -7,7 +7,7 @@
   "plugins": [
     {
       "name": "capscan",
-      "source": "./",
+      "source": "./plugin",
       "description": "Review dependency updates for capabilities a repository could adopt, out of band from CI."
     }
   ]

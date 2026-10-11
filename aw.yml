@@ -5,11 +5,11 @@ includes:
   - workflows/capscan.md
   - workflows/capscan-sweep.md
 # The workflows read the rules and run the scripts from .github/aw/capscan/.
-# The skill uses the same files from skills/capscan/, so there is one copy of each.
+# The skill uses the same files from plugin/skills/capscan/, so there is one copy of each.
 resources:
-  - source: skills/capscan/RULES.md
+  - source: plugin/skills/capscan/RULES.md
     destination: .github/aw/capscan/RULES.md
-  - source: skills/capscan/scripts/gather-facts.sh
+  - source: plugin/skills/capscan/scripts/gather-facts.sh
     destination: .github/aw/capscan/gather-facts.sh
-  - source: skills/capscan/scripts/verify-report.sh
+  - source: plugin/skills/capscan/scripts/verify-report.sh
     destination: .github/aw/capscan/verify-report.sh

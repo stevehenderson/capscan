@@ -16,14 +16,14 @@ capscan runs two ways from the same rules and scripts:
 
 | Path | Purpose |
 |---|---|
-| `skills/capscan/SKILL.md` | The skill: how an agent runs a review on a workstation |
-| `skills/capscan/RULES.md` | The agent rules that define a capability review, shared by the skill and the workflows |
-| `skills/capscan/scripts/gather-facts.sh` | Gathers the facts a review starts from: a dependency inventory with the lines that use each dependency, govulncheck, the GODEBUG diff, version declarations, and npm outdated and audit |
-| `skills/capscan/scripts/verify-report.sh` | Checks every cited `path:line` and link before a report is published |
+| `plugin/skills/capscan/SKILL.md` | The skill: how an agent runs a review on a workstation |
+| `plugin/skills/capscan/RULES.md` | The agent rules that define a capability review, shared by the skill and the workflows |
+| `plugin/skills/capscan/scripts/gather-facts.sh` | Gathers the facts a review starts from: a dependency inventory with the lines that use each dependency, govulncheck, the GODEBUG diff, version declarations, and npm outdated and audit |
+| `plugin/skills/capscan/scripts/verify-report.sh` | Checks every cited `path:line` and link before a report is published |
 | `workflows/capscan.md` | The agentic workflow that reviews each Dependabot pull request and comments with the report |
 | `workflows/capscan-sweep.md` | The agentic workflow that runs weekly and opens an issue covering version gates and drift that no Dependabot PR surfaces |
 | `aw.yml` | The gh-aw package manifest that installs the workflows, rules, and scripts |
-| `.claude-plugin/` | The Claude Code plugin and marketplace manifests that install the skill |
+| `plugin/`, `.claude-plugin/` | The Claude Code plugin that holds the skill, and the marketplace manifest that installs it |
 | `examples/claude-settings.json` | Claude Code permissions for running the skill |
 | `examples/claude-code-action/` | The same two workflows built directly on `anthropics/claude-code-action`, for comparison |
 
@@ -80,7 +80,7 @@ claude plugin marketplace add stevehenderson/capscan
 claude plugin install capscan@capscan
 ```
 
-For other agents, or to pin the skill in one repository, copy `skills/capscan/` into the directory the agent reads skills from, such as `.claude/skills/`, `.github/skills/`, or `.agents/skills/`.
+For other agents, or to pin the skill in one repository, copy `plugin/skills/capscan/` into the directory the agent reads skills from, such as `.claude/skills/`, `.github/skills/`, or `.agents/skills/`.
 
 Then, from a clone of the repository to review, ask for a review:
 
